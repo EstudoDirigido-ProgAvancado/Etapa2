@@ -1,0 +1,57 @@
+using System;
+
+
+class Program
+  {
+    static void Main(string[] args) 
+      {
+
+        Console.WriteLine("Digite o valor dimensional da Matriz: ");      
+        string[] line = Console.ReadLine().Split(' ');
+
+        Console.WriteLine("Agora, digite os valores conforme dimensões: ");
+      
+        int m = int.Parse(line[0]);
+        int n = int.Parse(line[1]);
+
+        int[,] mat = new int[m,n];
+
+        for (int i = 0; i < m; i++) 
+          {
+            string[] values = Console.ReadLine().Split(' ');
+            for (int j = 0; j < n; j++) 
+              {
+                mat[i, j] = int.Parse(values[j]);
+              }
+          }
+
+        int x = int.Parse(Console.ReadLine());
+
+        for (int i = 0; i < m; i++) 
+          {
+            for (int j = 0; j < n; j++) 
+              {
+                if (mat[i, j] == x) 
+                  {
+                    Console.WriteLine("Posição " + i + "," + j + ":");
+                    if (j > 0) 
+                      {
+                        Console.WriteLine("Esquerda: " + mat[i, j - 1]);
+                      }
+                    if (i > 0) 
+                      {
+                        Console.WriteLine("Cima: " + mat[i - 1, j]);
+                      }
+                    if (j < n - 1) 
+                      {
+                        Console.WriteLine("Direta: " + mat[i, j + 1]);
+                      }
+                    if (i < m - 1) 
+                      {
+                        Console.WriteLine("Baixo: " + mat[i + 1, j]);
+                      }
+                  }
+              }
+          }
+      }
+  }
